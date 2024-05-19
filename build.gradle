@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.opm'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    javaVersion = JavaVersion.VERSION_21
+
+    httpClientVersion = "2.7.5"
+    jacksonVersion = "2.17.1"
+
+    junitVersion = "5.10.0"
+    mockitoVersion = "4.9.0"
+}
+
+dependencies {
+    implementation(
+            "com.squareup.okhttp:okhttp:$httpClientVersion",
+            "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+    )
+
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.mockito:mockito-core:${mockitoVersion}",
+            "org.mockito:mockito-junit-jupiter:${mockitoVersion}",
+    )
+}
+
+test {
+    useJUnitPlatform()
+}
